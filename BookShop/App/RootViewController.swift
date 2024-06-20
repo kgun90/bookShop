@@ -7,7 +7,10 @@
 
 import UIKit
 
+
 class RootViewController: UIViewController {
+    private let searchViewController = SearchViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -15,7 +18,8 @@ class RootViewController: UIViewController {
     }
 
     private func setup() {
-        
+        addChild(searchViewController)
+        view.addSubview(searchViewController.view)
     }
     
     private func interface() {

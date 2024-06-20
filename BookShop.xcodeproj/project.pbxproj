@@ -13,6 +13,8 @@
 		84791A062C17198E00670BD8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84791A052C17198E00670BD8 /* RootViewController.swift */; };
 		84791A0B2C17199000670BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84791A0A2C17199000670BD8 /* Assets.xcassets */; };
 		84791A0E2C17199000670BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84791A0C2C17199000670BD8 /* LaunchScreen.storyboard */; };
+		84DE54872C1BD56800BC5587 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54862C1BD56800BC5587 /* Device.swift */; };
+		84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE548A2C202E4200BC5587 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		84791A0A2C17199000670BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84791A0D2C17199000670BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84791A0F2C17199000670BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DE54862C1BD56800BC5587 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		84DE548A2C202E4200BC5587 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +50,6 @@
 				0C140DE78E22E4D695153D9B /* Pods-BookShop.debug.xcconfig */,
 				22AE6A7D42EF7E45BAA30D77 /* Pods-BookShop.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -62,6 +65,8 @@
 		846C08462C1BC66100E3CCAF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				84DE54902C23D47A00BC5587 /* Repository */,
+				84DE54892C202E3200BC5587 /* Search */,
 				84791A052C17198E00670BD8 /* RootViewController.swift */,
 			);
 			path = App;
@@ -70,9 +75,11 @@
 		846C08472C1BC66A00E3CCAF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				84DE54852C1BD54800BC5587 /* Extension */,
 				84791A0A2C17199000670BD8 /* Assets.xcassets */,
 				84791A0C2C17199000670BD8 /* LaunchScreen.storyboard */,
 				84791A0F2C17199000670BD8 /* Info.plist */,
+				84DE54862C1BD56800BC5587 /* Device.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -103,6 +110,28 @@
 				846C08472C1BC66A00E3CCAF /* Common */,
 			);
 			path = BookShop;
+			sourceTree = "<group>";
+		};
+		84DE54852C1BD54800BC5587 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		84DE54892C202E3200BC5587 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				84DE548A2C202E4200BC5587 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		84DE54902C23D47A00BC5587 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DE5A693C18A734F65AF255C7 /* Frameworks */ = {
@@ -230,6 +259,8 @@
 				84791A062C17198E00670BD8 /* RootViewController.swift in Sources */,
 				84791A022C17198E00670BD8 /* AppDelegate.swift in Sources */,
 				84791A042C17198E00670BD8 /* SceneDelegate.swift in Sources */,
+				84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */,
+				84DE54872C1BD56800BC5587 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
