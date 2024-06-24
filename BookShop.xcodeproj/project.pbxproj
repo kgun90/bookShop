@@ -15,6 +15,10 @@
 		84791A0E2C17199000670BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84791A0C2C17199000670BD8 /* LaunchScreen.storyboard */; };
 		84DE54872C1BD56800BC5587 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54862C1BD56800BC5587 /* Device.swift */; };
 		84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE548A2C202E4200BC5587 /* SearchViewController.swift */; };
+		84DE54922C23D7AC00BC5587 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54912C23D7AC00BC5587 /* NetworkService.swift */; };
+		84DE54942C2419F700BC5587 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54932C2419F700BC5587 /* Date.swift */; };
+		84DE54962C29330200BC5587 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54952C29330200BC5587 /* Endpoint.swift */; };
+		84DE54982C293E9900BC5587 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54972C293E9900BC5587 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		84791A0F2C17199000670BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84DE54862C1BD56800BC5587 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		84DE548A2C202E4200BC5587 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		84DE54912C23D7AC00BC5587 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		84DE54932C2419F700BC5587 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		84DE54952C29330200BC5587 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		84DE54972C293E9900BC5587 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +73,7 @@
 		846C08462C1BC66100E3CCAF /* App */ = {
 			isa = PBXGroup;
 			children = (
-				84DE54902C23D47A00BC5587 /* Repository */,
+				84DE54902C23D47A00BC5587 /* Service */,
 				84DE54892C202E3200BC5587 /* Search */,
 				84791A052C17198E00670BD8 /* RootViewController.swift */,
 			);
@@ -115,6 +123,7 @@
 		84DE54852C1BD54800BC5587 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				84DE54932C2419F700BC5587 /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -127,11 +136,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		84DE54902C23D47A00BC5587 /* Repository */ = {
+		84DE54902C23D47A00BC5587 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				84DE54912C23D7AC00BC5587 /* NetworkService.swift */,
+				84DE54952C29330200BC5587 /* Endpoint.swift */,
+				84DE54972C293E9900BC5587 /* Response.swift */,
 			);
-			path = Repository;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		DE5A693C18A734F65AF255C7 /* Frameworks */ = {
@@ -258,8 +270,12 @@
 			files = (
 				84791A062C17198E00670BD8 /* RootViewController.swift in Sources */,
 				84791A022C17198E00670BD8 /* AppDelegate.swift in Sources */,
+				84DE54962C29330200BC5587 /* Endpoint.swift in Sources */,
+				84DE54942C2419F700BC5587 /* Date.swift in Sources */,
 				84791A042C17198E00670BD8 /* SceneDelegate.swift in Sources */,
 				84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */,
+				84DE54982C293E9900BC5587 /* Response.swift in Sources */,
+				84DE54922C23D7AC00BC5587 /* NetworkService.swift in Sources */,
 				84DE54872C1BD56800BC5587 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
