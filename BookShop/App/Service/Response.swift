@@ -14,7 +14,7 @@ struct ErrorResponse: Codable {
 
 // MARK: - SerachResponse
 struct SearchResponse: Codable {
-    let error, total, page: String?
+    let error, total, page: String
     let books: [BookData]?
 }
 

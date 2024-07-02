@@ -10,9 +10,9 @@ import Foundation
 class SearchRepository {
     static let shared = SearchRepository()
     
-    func getSearchResult(keyword: String, completion: @escaping(Decodable) -> Void) {       
+    func getSearchResult(keyword: String, page: Int, completion: @escaping(Decodable) -> Void) {
         
-        NetworkService(route: .search).request(path: "/\(keyword)", method: .get, type: SearchResponse.self) { response in
+        NetworkService(route: .search).request(path: "/\(keyword)/\(page)", method: .get, type: SearchResponse.self) { response in
             if let response = response {
                 completion(response)
                 return

@@ -75,8 +75,11 @@ class SearchViewController: UIViewController {
             .sink { [weak self] event in
                 switch event {
                 case .SearchData(let data):
-                    self?.bookData = data ?? []
-                    self?.listTableView.reloadData()
+                    if let books = data {
+                        self?.bookData.append(contentsOf: books)
+                        self?.listTableView.reloadData()
+                    }
+                    
                 case .ErrorMessage(let message):
                     self?.showError(message)
                 }
@@ -108,8 +111,11 @@ class SearchViewController: UIViewController {
     }
     
     private func showError(_ message: String) {
-        print(message)
-    }
+          let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "OK", style: .default))
+          present(alert, animated: true)
+      }
+
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -122,5 +128,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.data = bookData[indexPath.row]
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == bookData.count - 1 {
+            input.send(.LoadMore)
+        }
     }
 }
