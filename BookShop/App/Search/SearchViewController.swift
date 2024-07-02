@@ -24,8 +24,8 @@ class SearchViewController: UIViewController {
     private lazy var searchField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "검색어"
-        textField.textColor = .black
-        textField.backgroundColor = .white
+        textField.textColor = .white
+        textField.backgroundColor = .gray
         return textField
     }()
     
@@ -33,7 +33,8 @@ class SearchViewController: UIViewController {
     private lazy var searchButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("검색", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = .systemBlue
         return btn
     }()
     
@@ -51,9 +52,10 @@ class SearchViewController: UIViewController {
     }
     
     private func setup() {
-        view.backgroundColor = .green
+        view.backgroundColor = .black
         
         listTableView.register(SearchListCell.self, forCellReuseIdentifier: cellID)
+        listTableView.backgroundColor = .black
         listTableView.delegate = self
         listTableView.dataSource = self
         

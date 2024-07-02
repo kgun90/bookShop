@@ -26,8 +26,8 @@ class SearchListCell: BaseTableViewCell {
     override func interface() {
         contentView.addSubview(cellContentView)
         cellContentView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.bottom.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview()
         }
     }
     

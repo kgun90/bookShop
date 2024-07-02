@@ -11,14 +11,14 @@ import SnapKit
 class ListCellContentView: BaseView {
     private lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     private let contentStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.distribution = .fill
-        sv.spacing = 10
+        sv.spacing = 5
         return sv
     }()
     
@@ -42,13 +42,14 @@ class ListCellContentView: BaseView {
         bookImageView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview()
-            $0.width.equalTo(30)
+            $0.width.equalTo(100)
         }
         addSubview(contentStackView)
         contentStackView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(bookImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(bookImageView.snp.trailing)
             $0.trailing.equalToSuperview()
+            $0.height.equalTo(100)
         }
         
         contentStackView.addArrangedSubview(titleLabel)
@@ -58,11 +59,11 @@ class ListCellContentView: BaseView {
     }
     
     private func configure() {
-        guard let data = data, let imageURL = data.image, let url = URL(string: imageURL) else {
+        guard let data = data else {
             return
         }
         
-        bookImageView.load(url: url)
+        bookImageView.loadImage(data.image)
         titleLabel.text = data.title
         subTitleLabel.text = data.subtitle
         isbnLabel.text = data.isbn13
