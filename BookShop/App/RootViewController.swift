@@ -14,16 +14,11 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        interface()
     }
 
     private func setup() {
         addChild(searchViewController)
         view.addSubview(searchViewController.view)
-    }
-    
-    private func interface() {
-        
     }
 }
 

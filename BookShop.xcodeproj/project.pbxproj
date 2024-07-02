@@ -19,6 +19,13 @@
 		84DE54942C2419F700BC5587 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54932C2419F700BC5587 /* Date.swift */; };
 		84DE54962C29330200BC5587 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54952C29330200BC5587 /* Endpoint.swift */; };
 		84DE54982C293E9900BC5587 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54972C293E9900BC5587 /* Response.swift */; };
+		84DE549C2C2948CA00BC5587 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE549B2C2948CA00BC5587 /* Repository.swift */; };
+		84DE549E2C294F1B00BC5587 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE549D2C294F1A00BC5587 /* SearchViewModel.swift */; };
+		84DE54A02C294F2100BC5587 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE549F2C294F2100BC5587 /* ViewModel.swift */; };
+		84DE54E02C3295E500BC5587 /* SearchListCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54DF2C3295E500BC5587 /* SearchListCellContentView.swift */; };
+		84DE54E22C32960400BC5587 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E12C32960400BC5587 /* BaseView.swift */; };
+		84DE54E42C32984100BC5587 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E32C32984100BC5587 /* UI.swift */; };
+		84DE54E62C32995700BC5587 /* SearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E52C32995700BC5587 /* SearchListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		84DE54932C2419F700BC5587 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		84DE54952C29330200BC5587 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84DE54972C293E9900BC5587 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		84DE549B2C2948CA00BC5587 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		84DE549D2C294F1A00BC5587 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		84DE549F2C294F2100BC5587 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		84DE54DF2C3295E500BC5587 /* SearchListCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellContentView.swift; sourceTree = "<group>"; };
+		84DE54E12C32960400BC5587 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		84DE54E32C32984100BC5587 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		84DE54E52C32995700BC5587 /* SearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +98,12 @@
 			isa = PBXGroup;
 			children = (
 				84DE54852C1BD54800BC5587 /* Extension */,
+				84DE549F2C294F2100BC5587 /* ViewModel.swift */,
 				84791A0A2C17199000670BD8 /* Assets.xcassets */,
 				84791A0C2C17199000670BD8 /* LaunchScreen.storyboard */,
 				84791A0F2C17199000670BD8 /* Info.plist */,
 				84DE54862C1BD56800BC5587 /* Device.swift */,
+				84DE54E12C32960400BC5587 /* BaseView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -124,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				84DE54932C2419F700BC5587 /* Date.swift */,
+				84DE54E32C32984100BC5587 /* UI.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -132,6 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				84DE548A2C202E4200BC5587 /* SearchViewController.swift */,
+				84DE549D2C294F1A00BC5587 /* SearchViewModel.swift */,
+				84DE54DF2C3295E500BC5587 /* SearchListCellContentView.swift */,
+				84DE54E52C32995700BC5587 /* SearchListCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -142,6 +162,7 @@
 				84DE54912C23D7AC00BC5587 /* NetworkService.swift */,
 				84DE54952C29330200BC5587 /* Endpoint.swift */,
 				84DE54972C293E9900BC5587 /* Response.swift */,
+				84DE549B2C2948CA00BC5587 /* Repository.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -268,6 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DE549E2C294F1B00BC5587 /* SearchViewModel.swift in Sources */,
+				84DE54E62C32995700BC5587 /* SearchListCell.swift in Sources */,
 				84791A062C17198E00670BD8 /* RootViewController.swift in Sources */,
 				84791A022C17198E00670BD8 /* AppDelegate.swift in Sources */,
 				84DE54962C29330200BC5587 /* Endpoint.swift in Sources */,
@@ -275,7 +298,12 @@
 				84791A042C17198E00670BD8 /* SceneDelegate.swift in Sources */,
 				84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */,
 				84DE54982C293E9900BC5587 /* Response.swift in Sources */,
+				84DE54E42C32984100BC5587 /* UI.swift in Sources */,
+				84DE549C2C2948CA00BC5587 /* Repository.swift in Sources */,
 				84DE54922C23D7AC00BC5587 /* NetworkService.swift in Sources */,
+				84DE54A02C294F2100BC5587 /* ViewModel.swift in Sources */,
+				84DE54E22C32960400BC5587 /* BaseView.swift in Sources */,
+				84DE54E02C3295E500BC5587 /* SearchListCellContentView.swift in Sources */,
 				84DE54872C1BD56800BC5587 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y79KUU6SRW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShop/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,6 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y79KUU6SRW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShop/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

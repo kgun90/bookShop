@@ -22,7 +22,7 @@ class NetworkService {
     }
     
 
-    func request<R: Decodable>(path: String, method: HTTPMethod, query: [String: String]? = nil, type: R.Type, completion: @escaping (Decodable?) -> Void) {
+   func request<R: Decodable>(path: String = "", method: HTTPMethod, query: [String: String]? = nil, type: R.Type, completion: @escaping (Decodable?) -> Void) {
         
         guard var urlComponent = URLComponents(string: Endpoint.BASE_URL) else {
             print("Invalid URL")
@@ -38,7 +38,7 @@ class NetworkService {
         request.httpMethod = method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print("No data received")

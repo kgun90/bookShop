@@ -13,8 +13,8 @@ struct ErrorResponse: Codable {
 }
 
 // MARK: - SerachResponse
-struct SerachResponse: Codable {
-    let error, total, page: Int?
+struct SearchResponse: Codable {
+    let error, total, page: String?
     let books: [BookData]?
 }
 
