@@ -22,17 +22,17 @@ class SearchViewModel {
     private let output: PassthroughSubject<Output, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
     
-    private var currentKeyword: String = ""
-    private var currentPage: Int = 1
-    private var totalPages: Int = 1
-    private var isLoading = false
+    private var currentKeyword = CurrentValueSubject<String, Never>("")
+    private var currentPage = CurrentValueSubject<Int, Never>(1)
+    private var totalPages = CurrentValueSubject<Int, Never>(1)
+    private var isLoading = CurrentValueSubject<Bool, Never>(false)
     
     func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
         input.sink { [weak self] event in
             switch event {
             case .KeywordInput(let keyword):
-                self?.currentKeyword = keyword
-                self?.currentPage = 1
+                self?.currentKeyword.send(keyword)
+                self?.currentPage.send(1)
                 self?.searchAction(keyword)
             case .LoadMore:
                 self?.loadMoreAction()
@@ -44,20 +44,20 @@ class SearchViewModel {
     }
     
     private func loadMoreAction() {
-        guard currentPage < totalPages && !isLoading else { return }
-        currentPage += 1
-        searchAction(currentKeyword)
+        guard currentPage.value < totalPages.value && !isLoading.value else { return }
+        currentPage.send(currentPage.value + 1)
+        searchAction(currentKeyword.value)
     }
     
     private func searchAction(_ keyword: String) {
-        guard !isLoading else { return }
-        isLoading = true
+        guard !isLoading.value else { return }
+        isLoading.send(true)
         
-        SearchRepository.shared.getSearchResult(keyword: keyword, page: currentPage) { response in
-            self.isLoading = false
+        SearchRepository.shared.getSearchResult(keyword: keyword, page: currentPage.value) { response in
+            self.isLoading.send(false)
             switch response {
             case let model as SearchResponse:
-                self.totalPages = (Int(model.total) ?? 1) / 10
+                self.totalPages.send((Int(model.total) ?? 1) / 10)
                 self.output.send(.SearchData(model.books))
             case let error as ErrorResponse:
                 self.output.send(.ErrorMessage(error.message))
