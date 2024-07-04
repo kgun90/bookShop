@@ -38,3 +38,44 @@ final class ImageCacheManager {
     static let shared = NSCache<NSString, UIImage>()
     private init() {}
 }
+
+
+extension UITextField {
+    func setKeyboardDismiss() {
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let button: UIBarButtonItem =  {
+            let item = UIBarButtonItem()
+            item.title = "닫기"
+            item.target = self
+            item.action = #selector(dismissAction)
+            return item
+        }()
+        
+        let toolBar: UIToolbar = {
+            let toolBar = UIToolbar()
+            toolBar.sizeToFit()
+            toolBar.setItems([flexSpace, button], animated: true)
+            
+            toolBar.isUserInteractionEnabled = true
+            return toolBar
+        }()
+        
+        self.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissAction() {
+        self.endEditing(true)
+    }
+}
+
+extension UIViewController {
+    func dismissKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(false)
+    }
+}

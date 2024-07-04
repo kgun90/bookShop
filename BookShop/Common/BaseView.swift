@@ -25,7 +25,7 @@ class BaseLabel: UILabel {
         self.text = text
         self.font = .systemFont(ofSize: size)
         self.textColor = textColor
-        self.numberOfLines = 1
+        self.numberOfLines = 0
 
         self.textAlignment = alignment
         self.layer.masksToBounds = true

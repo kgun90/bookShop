@@ -24,3 +24,15 @@ struct BookData: Codable {
     let image: String?
     let url: String?
 }
+
+// MARK: - DetailResponse
+struct DetailResponse: Codable {
+    let error: String?
+    let title, subtitle, authors: String
+    let publisher, language, isbn10, isbn13: String?
+    let pages, year, rating, desc: String?
+    let price: String?
+    let image: String?
+    let url: String?
+    let pdf: [String: String]?
+}

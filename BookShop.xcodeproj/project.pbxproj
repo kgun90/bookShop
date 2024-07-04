@@ -26,6 +26,9 @@
 		84DE54E22C32960400BC5587 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E12C32960400BC5587 /* BaseView.swift */; };
 		84DE54E42C32984100BC5587 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E32C32984100BC5587 /* UI.swift */; };
 		84DE54E62C32995700BC5587 /* SearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E52C32995700BC5587 /* SearchListCell.swift */; };
+		84DE54E82C34F0DF00BC5587 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E72C34F0DF00BC5587 /* DetailViewController.swift */; };
+		84DE54EA2C353E5100BC5587 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54E92C353E5100BC5587 /* DetailViewModel.swift */; };
+		84DE54EC2C35456800BC5587 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE54EB2C35456800BC5587 /* DetailContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		84DE54E12C32960400BC5587 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		84DE54E32C32984100BC5587 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		84DE54E52C32995700BC5587 /* SearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCell.swift; sourceTree = "<group>"; };
+		84DE54E72C34F0DF00BC5587 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84DE54E92C353E5100BC5587 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		84DE54EB2C35456800BC5587 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 				84DE54902C23D47A00BC5587 /* Service */,
 				84DE54892C202E3200BC5587 /* Search */,
 				84791A052C17198E00670BD8 /* RootViewController.swift */,
+				84DE54E72C34F0DF00BC5587 /* DetailViewController.swift */,
+				84DE54EB2C35456800BC5587 /* DetailContentView.swift */,
+				84DE54E92C353E5100BC5587 /* DetailViewModel.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -290,17 +299,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DE549E2C294F1B00BC5587 /* SearchViewModel.swift in Sources */,
+				84DE54E82C34F0DF00BC5587 /* DetailViewController.swift in Sources */,
 				84DE54E62C32995700BC5587 /* SearchListCell.swift in Sources */,
 				84791A062C17198E00670BD8 /* RootViewController.swift in Sources */,
 				84791A022C17198E00670BD8 /* AppDelegate.swift in Sources */,
 				84DE54962C29330200BC5587 /* Endpoint.swift in Sources */,
 				84DE54942C2419F700BC5587 /* Date.swift in Sources */,
 				84791A042C17198E00670BD8 /* SceneDelegate.swift in Sources */,
+				84DE54EC2C35456800BC5587 /* DetailContentView.swift in Sources */,
 				84DE548B2C202E4200BC5587 /* SearchViewController.swift in Sources */,
 				84DE54982C293E9900BC5587 /* Response.swift in Sources */,
 				84DE54E42C32984100BC5587 /* UI.swift in Sources */,
 				84DE549C2C2948CA00BC5587 /* Repository.swift in Sources */,
 				84DE54922C23D7AC00BC5587 /* NetworkService.swift in Sources */,
+				84DE54EA2C353E5100BC5587 /* DetailViewModel.swift in Sources */,
 				84DE54A02C294F2100BC5587 /* ViewModel.swift in Sources */,
 				84DE54E22C32960400BC5587 /* BaseView.swift in Sources */,
 				84DE54E02C3295E500BC5587 /* SearchListCellContentView.swift in Sources */,
@@ -447,9 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y79KUU6SRW;
+				DEVELOPMENT_TEAM = RT3T8DHJJ3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShop/Common/Info.plist;
@@ -466,6 +479,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.gKang.BookShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -481,9 +495,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y79KUU6SRW;
+				DEVELOPMENT_TEAM = RT3T8DHJJ3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShop/Common/Info.plist;
@@ -500,6 +515,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.gKang.BookShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

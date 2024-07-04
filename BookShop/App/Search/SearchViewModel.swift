@@ -19,7 +19,7 @@ class SearchViewModel {
         case ErrorMessage(String)
     }
     
-    private let output: PassthroughSubject<Output, Never> = .init()
+    private let output = PassthroughSubject<Output, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     private var currentKeyword = CurrentValueSubject<String, Never>("")

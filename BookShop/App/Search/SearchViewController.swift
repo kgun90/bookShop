@@ -12,10 +12,10 @@ import Combine
 class SearchViewController: UIViewController {
     private let viewModel = SearchViewModel()
     private var cancellables = Set<AnyCancellable>()
-    private let input: PassthroughSubject<SearchViewModel.Input, Never> = .init()
+    private let input = PassthroughSubject<SearchViewModel.Input, Never>()
     
     private let topStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 20
         return stackView
@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
         textField.placeholder = "검색어"
         textField.textColor = .white
         textField.backgroundColor = .gray
+        textField.setKeyboardDismiss()
         return textField
     }()
     
@@ -67,6 +68,7 @@ class SearchViewController: UIViewController {
         })
         
         searchButton.addAction(action, for: .touchUpInside)
+        dismissKeyboard()
     }
     
     private func bind() {
@@ -89,7 +91,7 @@ class SearchViewController: UIViewController {
     
     private func interface() {
         view.addSubview(topStackView)
-        topStackView.snp.makeConstraints { 
+        topStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Device.topInset)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(40)
@@ -97,13 +99,13 @@ class SearchViewController: UIViewController {
         
         topStackView.addArrangedSubview(searchField)
         topStackView.addArrangedSubview(searchButton)
-
+        
         searchField.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.7)
         }
         
         view.addSubview(listTableView)
-        listTableView.snp.makeConstraints { 
+        listTableView.snp.makeConstraints {
             $0.top.equalTo(topStackView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview()
@@ -111,11 +113,11 @@ class SearchViewController: UIViewController {
     }
     
     private func showError(_ message: String) {
-          let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "OK", style: .default))
-          present(alert, animated: true)
-      }
-
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -126,7 +128,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! SearchListCell
         cell.data = bookData[indexPath.row]
-
+        
         return cell
     }
     
@@ -134,5 +136,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == bookData.count - 1 {
             input.send(.LoadMore)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let book = bookData[indexPath.row]
+        guard let isbn13 = book.isbn13 else { return }
+        let detailViewController = DetailViewController(isbn13: isbn13)
+        self.present(detailViewController, animated: true)
     }
 }
