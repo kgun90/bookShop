@@ -22,7 +22,7 @@ class SearchRepository {
     
     func getBookDetail(isbn13: String, completion: @escaping(Decodable) -> Void) {
         
-        NetworkService(route: .books).request(path: "/\(isbn13)", method: .get, type: DetailResponse.self) { response in
+        NetworkService(route: .books).request(path: "/\(isbn13)", method: .get, type: BookData.self) { response in
             if let response = response {
                 completion(response)
                 return

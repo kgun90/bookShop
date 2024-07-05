@@ -18,21 +18,20 @@ struct SearchResponse: Codable {
     let books: [BookData]?
 }
 
-// MARK: - Book
-struct BookData: Codable {
-    let title, subtitle, isbn13, price: String?
-    let image: String?
-    let url: String?
-}
-
 // MARK: - DetailResponse
-struct DetailResponse: Codable {
-    let error: String?
-    let title, subtitle, authors: String
-    let publisher, language, isbn10, isbn13: String?
-    let pages, year, rating, desc: String?
+struct BookData: Codable {
+    let title, subtitle, isbn13: String
     let price: String?
     let image: String?
     let url: String?
+    
+    let authors, error: String?
+    let publisher, language, isbn10: String?
+    let pages, year, rating, desc: String?
     let pdf: [String: String]?
+}
+
+struct LocalBookData: Codable {    
+    var isFavorite: Bool = false
+    var userRating: Int? = nil
 }

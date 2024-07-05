@@ -9,6 +9,14 @@ import UIKit
 import SnapKit
 
 class ListCellContentView: BaseView {
+    private let mainStackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.spacing = 10
+        sv.distribution = .fill
+        return sv
+    }()
+    
     private lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -25,8 +33,23 @@ class ListCellContentView: BaseView {
     private let titleLabel = BaseLabel(textColor: .lightGray)
     private let subTitleLabel = BaseLabel(textColor: .lightGray)
     private let isbnLabel = BaseLabel(textColor: .lightGray)
-    
     private lazy var priceLabel = BaseLabel(textColor: .lightGray)
+    
+    private let extraStackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .vertical
+        sv.spacing = 5
+        return sv
+    }()
+    
+    private let favoriteImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(systemName: "heart")
+        iv.tintColor = .systemGray
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    private let ratingLabel = BaseLabel(size: 12, textColor: .systemYellow)
     
     
     var data: BookData? {
@@ -38,24 +61,40 @@ class ListCellContentView: BaseView {
     }
     
     override func interface() {
-        addSubview(bookImageView)
-        bookImageView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.width.equalTo(100)
+        addSubview(mainStackView)
+        mainStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        addSubview(contentStackView)
+        
+        mainStackView.addArrangedSubview(bookImageView)
+        bookImageView.snp.makeConstraints {
+            $0.width.equalTo(80)
+        }
+        
+        mainStackView.addArrangedSubview(contentStackView)
         contentStackView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(bookImageView.snp.trailing)
-            $0.trailing.equalToSuperview()
             $0.height.equalTo(100)
+            $0.width.equalToSuperview().multipliedBy(0.6)
         }
         
         contentStackView.addArrangedSubview(titleLabel)
         contentStackView.addArrangedSubview(subTitleLabel)
         contentStackView.addArrangedSubview(isbnLabel)
         contentStackView.addArrangedSubview(priceLabel)
+        
+        mainStackView.addArrangedSubview(extraStackView)
+        extraStackView.snp.makeConstraints {
+            $0.width.equalTo(80)
+            $0.height.equalTo(100)
+        }
+        
+        extraStackView.addArrangedSubview(favoriteImageView)
+        favoriteImageView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(35)
+        }
+        extraStackView.addArrangedSubview(ratingLabel)
+        
     }
     
     private func configure() {
@@ -68,6 +107,16 @@ class ListCellContentView: BaseView {
         subTitleLabel.text = data.subtitle
         isbnLabel.text = data.isbn13
         priceLabel.text = data.price
+        
+        setExtraInfo(data.isbn13)
+    }
+    
+    private func setExtraInfo(_ isbn13: String) {
+        favoriteImageView.image = BookManager.shared.getFavorite(isbn13: isbn13) ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        favoriteImageView.tintColor = BookManager.shared.getFavorite(isbn13: isbn13) ? .red : .systemGray
+        
+        
+        let rating = BookManager.shared.getRating(isbn13: isbn13) == nil ? "" : "Rating: \(BookManager.shared.getRating(isbn13: isbn13)!)"
+        ratingLabel.text = "\(rating)"
     }
 }
-

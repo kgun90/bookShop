@@ -141,8 +141,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let book = bookData[indexPath.row]
-        guard let isbn13 = book.isbn13 else { return }
-        let detailViewController = DetailViewController(isbn13: isbn13)
+        
+        let detailViewController = DetailViewController(isbn13: book.isbn13)
         self.present(detailViewController, animated: true)
     }
 }

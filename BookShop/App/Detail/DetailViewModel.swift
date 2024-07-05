@@ -14,7 +14,7 @@ class DetailViewModel {
     }
     
     enum Output {
-        case loaded(DetailResponse)
+        case loaded(BookData)
         case ErrorMessage(String)
     }
 
@@ -35,7 +35,7 @@ class DetailViewModel {
     private func fetchBookDetail(_ isbn13: String) {
         SearchRepository.shared.getBookDetail(isbn13: isbn13) {  response in
             switch response {
-            case let model as DetailResponse:
+            case let model as BookData:
                 self.output.send(.loaded(model))
             case let error as ErrorResponse:
                 self.output.send(.ErrorMessage(error.message))

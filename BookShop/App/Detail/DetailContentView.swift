@@ -18,6 +18,10 @@ class DetailContentView: BaseView {
         return stackView
     }()
     
+    private let imageView = UIImageView()
+    private let favoriteButton = UIButton(type: .system)
+    private let ratingTextField = UITextField()
+        
     private let titleLabel = BaseLabel(size: 28, textColor: .white)
     private let subtitleLabel = BaseLabel(size: 20, textColor: .lightGray)
     private let authorLabel = BaseLabel(size: 16, textColor: .white)
@@ -28,16 +32,20 @@ class DetailContentView: BaseView {
     private let ratingLabel = BaseLabel(size: 16, textColor: .white)
     private let descriptionLabel = BaseLabel(size: 16, textColor: .white)
     private let priceLabel = BaseLabel(size: 16, textColor: .white)
-    private let imageView = UIImageView()
-    private let pdfView = PDFView()
     
-    var data: DetailResponse? {
+    private let pdfView = PDFView()
+
+    var data: BookData? {
         didSet { configure() }
     }
     
     override func setup() {
         imageView.contentMode = .scaleAspectFit
         pdfView.contentMode = .scaleAspectFit
+        
+        favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
+//        favoriteButton.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+
     }
     
     override func interface() {
@@ -71,7 +79,7 @@ class DetailContentView: BaseView {
         
         titleLabel.text = "\(bookDetail.title)"
         subtitleLabel.text = "\(bookDetail.subtitle)"
-        authorLabel.text = "\(bookDetail.authors)"
+        authorLabel.text = "\(bookDetail.authors ?? "")"
         publisherLabel.text = "Publisher: \(bookDetail.publisher ?? "")"
         languageLabel.text = "Language: \(bookDetail.language ?? "")"
         pagesLabel.text = "Pages: \(bookDetail.pages ?? "")"
