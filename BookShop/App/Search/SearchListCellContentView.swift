@@ -90,8 +90,8 @@ class ListCellContentView: BaseView {
         
         extraStackView.addArrangedSubview(favoriteImageView)
         favoriteImageView.snp.makeConstraints {
-            $0.height.equalTo(50)
-            $0.width.equalTo(35)
+            $0.height.equalTo(20)
+            $0.width.equalTo(20)
         }
         extraStackView.addArrangedSubview(ratingLabel)
         
@@ -116,7 +116,10 @@ class ListCellContentView: BaseView {
         favoriteImageView.tintColor = BookManager.shared.getFavorite(isbn13: isbn13) ? .red : .systemGray
         
         
-        let rating = BookManager.shared.getRating(isbn13: isbn13) == nil ? "" : "Rating: \(BookManager.shared.getRating(isbn13: isbn13)!)"
+        let rating = BookManager.shared.getRating(isbn13: isbn13) == nil 
+        ? ""
+        : "Rating: \(BookManager.shared.getRating(isbn13: isbn13)!)"
+        
         ratingLabel.text = "\(rating)"
     }
 }

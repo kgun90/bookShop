@@ -52,6 +52,11 @@ class SearchViewController: UIViewController {
         interface()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+    }
+    
     private func setup() {
         view.backgroundColor = .black
         
@@ -143,6 +148,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let book = bookData[indexPath.row]
         
         let detailViewController = DetailViewController(isbn13: book.isbn13)
+        detailViewController.modalPresentationStyle = .overFullScreen
+        detailViewController.delegate = self
         self.present(detailViewController, animated: true)
+    }
+}
+
+extension SearchViewController: DetailViewDelegate {
+    func modalDismiss() {
+        listTableView.reloadData()
     }
 }
