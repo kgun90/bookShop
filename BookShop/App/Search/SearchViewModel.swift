@@ -33,7 +33,11 @@ class SearchViewModel {
             case .KeywordInput(let keyword):
                 self?.currentKeyword.send(keyword)
                 self?.currentPage.send(1)
+                
+                self?.output.send(.SearchData([]))
+                
                 self?.searchAction(keyword)
+                
             case .LoadMore:
                 self?.loadMoreAction()
             }
@@ -59,6 +63,7 @@ class SearchViewModel {
             case let model as SearchResponse:
                 self.totalPages.send((Int(model.total) ?? 1) / 10)
                 self.output.send(.SearchData(model.books))
+                
             case let error as ErrorResponse:
                 self.output.send(.ErrorMessage(error.message))
             default:

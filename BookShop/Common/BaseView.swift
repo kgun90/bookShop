@@ -18,14 +18,16 @@ class BaseLabel: UILabel {
     convenience init(
         text: String? = nil,
         size: CGFloat = 15,
+        weight: UIFont.Weight = .regular,
+        numberOfLines: Int = 0,
         textColor: UIColor = .white,
         alignment: NSTextAlignment = .left
     ) {
         self.init(frame: .zero)
         self.text = text
-        self.font = .systemFont(ofSize: size)
+        self.font = .systemFont(ofSize: size, weight: weight)
         self.textColor = textColor
-        self.numberOfLines = 0
+        self.numberOfLines = numberOfLines
 
         self.textAlignment = alignment
         self.layer.masksToBounds = true

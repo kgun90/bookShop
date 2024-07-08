@@ -63,6 +63,7 @@ class SearchViewController: UIViewController {
         
         let action = UIAction(handler: { _ in
             if let keyword = self.searchField.text {
+                self.bookData = []
                 self.input.send(.KeywordInput(keyword))
             }
         })

@@ -30,8 +30,8 @@ class ListCellContentView: BaseView {
         return sv
     }()
     
-    private let titleLabel = BaseLabel(textColor: .lightGray)
-    private let subTitleLabel = BaseLabel(textColor: .lightGray)
+    private let titleLabel = BaseLabel(weight: .semibold, numberOfLines: 2, textColor: .white)
+    private let subTitleLabel = BaseLabel(numberOfLines: 1, textColor: .lightGray)
     private let isbnLabel = BaseLabel(textColor: .lightGray)
     private lazy var priceLabel = BaseLabel(textColor: .lightGray)
     

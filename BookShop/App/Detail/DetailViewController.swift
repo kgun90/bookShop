@@ -171,13 +171,19 @@ class DetailViewController: UIViewController {
             actionSheet.addAction(action)
         }
         
+        let deleteRate = UIAlertAction(title: "평점 제거", style: .default) { _ in
+            self.alertRating(nil)
+        }
+        actionSheet.addAction(deleteRate)
+        
+        
         let closeAction = UIAlertAction(title: "닫기", style: .cancel, handler: nil)
         actionSheet.addAction(closeAction)
         
         present(actionSheet, animated: true, completion: nil)
     }
     
-    private func alertRating(_ rate: Int) {
+    private func alertRating(_ rate: Int?) {
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
             self.showAlert(title: "Alert", "평가가 완료 되었습니다.")
             BookManager.shared.setRating(isbn13: self.isbn13, rate: rate)

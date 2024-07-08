@@ -45,7 +45,7 @@ class BookManager {
         return load(key: key)?.userRating
     }
     
-    func setRating(isbn13 key: String, rate: Int) {
+    func setRating(isbn13 key: String, rate: Int?) {
         var localData: LocalBookData
         
         if let data = load(key: key) {
