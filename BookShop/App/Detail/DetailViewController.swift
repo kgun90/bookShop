@@ -118,11 +118,8 @@ class DetailViewController: UIViewController {
         favoriteButton.addTarget(self, action: #selector(actionFavorite), for: .touchUpInside)
         setFavoriteButton()
         
-        let rating = BookManager.shared.getRating(isbn13: isbn13)
-        let star = String(repeating: "⭐️", count: rating ?? 0)
-        let ratingTitle = rating == nil ? "평가하기" : star
-        ratingButton.setTitle(ratingTitle, for: .normal)
-        ratingButton.titleLabel?.textAlignment = .right
+        ratingButton.addTarget(self, action: #selector(actionRating), for: .touchUpInside)
+        setRatingButton()
     }
     
     private func setFavoriteButton() {
@@ -151,5 +148,41 @@ class DetailViewController: UIViewController {
     private func actionClose() {
         delegate?.modalDismiss()
         dismiss(animated: true)
+    }
+    
+    private func setRatingButton() {
+        let rating = BookManager.shared.getRating(isbn13: isbn13)
+        let star = String(repeating: "⭐️", count: rating ?? 0)
+        let ratingTitle = rating == nil ? "평가하기" : star
+        ratingButton.setTitle(ratingTitle, for: .normal)
+        ratingButton.titleLabel?.textAlignment = .right
+    }
+    
+    @objc
+    private func actionRating() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for i in 1...5 {
+            let stars = -(i - 6)
+            let title = String(repeating: "⭐️", count: stars)
+            let action = UIAlertAction(title: title, style: .default) { _ in
+                self.alertRating(stars)
+            }
+            actionSheet.addAction(action)
+        }
+        
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel, handler: nil)
+        actionSheet.addAction(closeAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func alertRating(_ rate: Int) {
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.5) {
+            self.showAlert(title: "Alert", "평가가 완료 되었습니다.")
+            BookManager.shared.setRating(isbn13: self.isbn13, rate: rate)
+            self.setRatingButton()
+            
+        }
     }
 }

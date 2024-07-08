@@ -52,11 +52,6 @@ class SearchViewController: UIViewController {
         interface()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(#function)
-    }
-    
     private func setup() {
         view.backgroundColor = .black
         

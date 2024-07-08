@@ -49,7 +49,7 @@ class ListCellContentView: BaseView {
         iv.contentMode = .scaleAspectFit
         return iv
     }()
-    private let ratingLabel = BaseLabel(size: 12, textColor: .systemYellow)
+    private let ratingLabel = BaseLabel(size: 8)
     
     
     var data: BookData? {
@@ -73,7 +73,7 @@ class ListCellContentView: BaseView {
         
         mainStackView.addArrangedSubview(contentStackView)
         contentStackView.snp.makeConstraints {
-            $0.height.equalTo(100)
+            $0.height.equalTo(120)
             $0.width.equalToSuperview().multipliedBy(0.6)
         }
         
@@ -81,20 +81,14 @@ class ListCellContentView: BaseView {
         contentStackView.addArrangedSubview(subTitleLabel)
         contentStackView.addArrangedSubview(isbnLabel)
         contentStackView.addArrangedSubview(priceLabel)
+        contentStackView.addArrangedSubview(ratingLabel)
         
         mainStackView.addArrangedSubview(extraStackView)
         extraStackView.snp.makeConstraints {
-            $0.width.equalTo(80)
-            $0.height.equalTo(100)
+            $0.width.equalTo(40)
         }
         
         extraStackView.addArrangedSubview(favoriteImageView)
-        favoriteImageView.snp.makeConstraints {
-            $0.height.equalTo(20)
-            $0.width.equalTo(20)
-        }
-        extraStackView.addArrangedSubview(ratingLabel)
-        
     }
     
     private func configure() {
@@ -115,11 +109,9 @@ class ListCellContentView: BaseView {
         favoriteImageView.image = BookManager.shared.getFavorite(isbn13: isbn13) ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         favoriteImageView.tintColor = BookManager.shared.getFavorite(isbn13: isbn13) ? .red : .systemGray
         
-        
-        let rating = BookManager.shared.getRating(isbn13: isbn13) == nil 
-        ? ""
-        : "Rating: \(BookManager.shared.getRating(isbn13: isbn13)!)"
-        
-        ratingLabel.text = "\(rating)"
+        let rating = BookManager.shared.getRating(isbn13: isbn13)
+        let star = String(repeating: "⭐️", count: rating ?? 0)
+    
+        ratingLabel.text = star
     }
 }

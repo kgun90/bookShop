@@ -19,9 +19,7 @@ class DetailContentView: BaseView {
     }()
     
     private let imageView = UIImageView()
-    private let favoriteButton = UIButton(type: .system)
-    private let ratingTextField = UITextField()
-        
+
     private let titleLabel = BaseLabel(size: 28, textColor: .white)
     private let subtitleLabel = BaseLabel(size: 20, textColor: .lightGray)
     private let authorLabel = BaseLabel(size: 16, textColor: .white)
@@ -42,10 +40,6 @@ class DetailContentView: BaseView {
     override func setup() {
         imageView.contentMode = .scaleAspectFit
         pdfView.contentMode = .scaleAspectFit
-        
-        favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
-//        favoriteButton.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
-
     }
     
     override func interface() {
@@ -100,5 +94,3 @@ class DetailContentView: BaseView {
         pdfView.document = document
     }
 }
-
-
